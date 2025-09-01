@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Portfolio Design System - Modern, Clean, Professional */
+
 
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 220 15% 20%;
 
-    /* Card system with soft shadows */
+    /* Card system */
     --card: 0 0% 100%;
     --card-foreground: 220 15% 20%;
     --card-shadow: 0 4px 20px -8px rgba(139, 92, 246, 0.15);

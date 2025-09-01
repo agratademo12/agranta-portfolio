@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import Navbar from "@/components/Navbar";
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Github, 
   Linkedin, 
@@ -18,7 +20,7 @@ import {
   Calendar,
   Send
 } from 'lucide-react';
-import agrataPhoto from '@/assets/agrata-photo.jpg';
+import agrataPhoto from '@/assets/Screenshot 2024-12-22 201133.jpg';
 
 const Portfolio = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +33,7 @@ const Portfolio = () => {
     { name: 'HTML', icon: Code },
     { name: 'CSS', icon: Palette },
     { name: 'React.js', icon: Code },
-    { name: 'Java', icon: Code },
+    { name: 'JavaScript', icon: Code },
     { name: 'Excel', icon: Code },
     { name: 'PowerPoint', icon: Code },
     { name: 'Word', icon: Code },
@@ -40,48 +42,83 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: 'Expense Splitter App',
-      description: 'A React-based application for splitting expenses among friends with real-time calculations.',
+      title: 'Fair Split',
+      description: 'A React-based application for splitting expenses among friends with real-time calculations for my 4th semester final project.',
       tech: ['React', 'JavaScript', 'CSS'],
       github: '#',
       live: '#'
     },
     {
       title: 'Hotel Website Design',
-      description: 'Complete hotel booking website with modern UI/UX design and responsive frontend.',
-      tech: ['Figma', 'HTML', 'CSS', 'JavaScript'],
-      github: '#',
-      live: '#'
+      description: 'hotel website with modern UI/UX design using figma and react using its front end development. it just contain the lanidng page for learning purpose.',
+      tech: ['Figma', 'React', 'CSS', 'JavaScript'],
+      github: 'https://github.com/agrata051/Bholenath-Hotel',
+      live: 'https://bholenath-hotel.vercel.app/'
     },
     {
-      title: 'Admin Portal',
-      description: 'Role-based access control system with dashboard and user management features.',
-      tech: ['React', 'TypeScript', 'Tailwind'],
-      github: '#',
-      live: '#'
+      title: 'Photography Portfolio',
+      description: 'A portfolio website i made for showcasing my photography work just for learning.',
+      tech: [ 'React', 'CSS'],
+      github: 'https://github.com/agrata051/portfolio-photography',
+      live: 'https://portfolio-vert-five-20.vercel.app/'
     },
     {
-      title: 'Portfolio Website',
+      title: 'This Portfolio Website',
       description: 'Personal portfolio showcasing projects and skills with modern design principles.',
-      tech: ['React', 'Tailwind', 'TypeScript'],
+      tech: ['React', 'Tailwind', 'Javascript'],
+      github: '#',
+      live: '#'
+    }
+    ,
+    {
+      title: 'BDH LAB',
+      description: 'A real world frontend based website for Builders and Devlopers Hand located in chyasal,Lalitpur.',
+      tech: ['React', 'Tailwind', 'JavaScript'],
       github: '#',
       live: '#'
     }
   ];
+   const graphics = [
+    {
+      title: "Hotel Design (Figma)",
+      description: "UI/UX design for hotel landing page using Figma.",
+    },
+    {
+      title: "Canva Posters",
+      description: "Designed creative posters and graphics using Canva.",
+    },
+  ];
 
   const experiences = [
+    
+    {
+      title: 'React Devloper -Internship ',
+      organization: 'Sarbatra Inc',
+      period: 'April/2025 - june/2025',
+      description: (
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Learned React.js from core by working on real-world projects and cloning multiple websites.</li>
+          <li>Acquired GitHub skills for version control and collaborative development.</li>
+          <li>Designed a hotel website in Figma and developed it using React.js.</li>
+          <li>Worked on various projects involving front-end development and UI/UX design.</li>
+          <li>Gained confidence and communication skills through field activities, including photoshoots and video shoots for client projects.</li>
+          <li>Participated in on-site tasks, enhancing teamwork and creative problem-solving abilities.</li>
+        </ul>
+      )
+    },
+    
+    {
+      title: 'Model United Nations ',
+      organization: 'Various MUN Conferences',
+      period: '2021 - 2022',
+      description: 'Participated in multiple MUN conferences representing different countries and volunteering the Mun team.'
+    },
     {
       title: 'Nepal Red Cross Volunteer',
       organization: 'Nepal Red Cross Society',
-      period: '2022 - Present',
+      period: 'March/2023 - july/2023',
       description: 'Community service and disaster response activities'
     },
-    {
-      title: 'Model United Nations Delegate',
-      organization: 'Various MUN Conferences',
-      period: '2021 - Present',
-      description: 'Participated in multiple MUN conferences representing different countries'
-    }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -93,11 +130,13 @@ const Portfolio = () => {
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  return (
+ return (
     <div className="min-h-screen bg-background">
+      <Navbar />
+ 
+  
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section  id="home" className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 hero-gradient opacity-10"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -122,7 +161,7 @@ const Portfolio = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 section-gradient">
+      <section  id="about" className="py-20 section-gradient">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -135,8 +174,7 @@ const Portfolio = () => {
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
                   Beyond academics, I'm actively involved in community service through 
-                  Nepal Red Cross and have participated in multiple Model United Nations 
-                  conferences, which have shaped my leadership and communication skills.
+                  Nepal Red Cross, which have shaped my leadership and communication skills.
                 </p>
                 <p className="text-lg text-muted-foreground">
                   I believe in the power of technology to make a positive impact and 
@@ -159,7 +197,7 @@ const Portfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20">
+      <section  id="skills" className="py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-12 fade-in">Skills & Technologies</h2>
@@ -178,48 +216,75 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 section-gradient">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12 fade-in">My Projects</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {projects.map((project, index) => (
-                <Card key={project.title} className={`card-portfolio fade-in fade-in-delay-${index % 3 + 1}`}>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                    <p className="text-muted-foreground mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex gap-4">
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="w-4 h-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
-                      <Button variant="default" size="sm" asChild>
-                        <a href={project.live} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Live Demo
-                        </a>
-                      </Button>
-                    </div>
+      {/* Works (Graphics + Projects) */}
+      <section id="works" className="py-20 section-gradient">
+        <div className="container mx-auto px-6 max-w-6xl text-center">
+          <h2 className="text-4xl font-bold mb-12">My Works</h2>
+
+          <Tabs defaultValue="projects" className="w-full">
+            <TabsList className="flex justify-center mb-8">
+              <TabsTrigger value="graphics">Graphics</TabsTrigger>
+              <TabsTrigger value="projects">Projects</TabsTrigger>
+            </TabsList>
+
+            {/* Graphics */}
+            <TabsContent value="graphics" className="grid md:grid-cols-2 gap-8">
+              {graphics.map((item) => (
+                <Card key={item.title} className="p-6 text-left">
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </Card>
+              ))}
+            </TabsContent>
+
+            {/* Projects */}
+            <TabsContent value="projects" className="grid md:grid-cols-2 gap-8">
+              {projects.map((project) => (
+                <Card key={project.title} className="p-6 text-left">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech) => (
+                      <Badge key={tech} variant="secondary" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex gap-4">
+                    <Button variant="outline" size="sm" asChild>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </a>
+                    </Button>
+                    <Button variant="default" size="sm" asChild>
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </a>
+                    </Button>
                   </div>
                 </Card>
               ))}
-            </div>
-          </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="py-20">
+      <section  id="experience" className="py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-12 fade-in">Experience & Volunteering</h2>
@@ -255,7 +320,7 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 section-gradient">
+      <section  id="contact" className="py-20 section-gradient">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-12 fade-in">Get In Touch</h2>
@@ -264,68 +329,30 @@ const Portfolio = () => {
                 <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
                 <p className="text-muted-foreground mb-8">
                   I'm always interested in discussing new opportunities, 
-                  projects, or just having a chat about technology and development.
+                  projects,
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="w-5 h-5 text-primary" />
-                    <span>your.email@example.com</span>
+                    <span>agratahumagain111@gmail.com</span>
+                     <span>+977-9762420429</span>
                   </div>
                   <div className="flex gap-4 pt-4">
                     <Button variant="outline" size="icon" asChild>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.linkedin.com/in/agrata-humagain-05472433a/" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="w-5 h-5" />
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild>
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                      <a href="https://github.com/agrata051" target="_blank" rel="noopener noreferrer">
                         <Github className="w-5 h-5" />
-                      </a>
-                    </Button>
-                    <Button variant="outline" size="icon" asChild>
-                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                        <Instagram className="w-5 h-5" />
                       </a>
                     </Button>
                   </div>
                 </div>
               </div>
-              <Card className="card-portfolio fade-in fade-in-delay-1">
-                <div className="p-6">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <Input
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        type="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Textarea
-                        placeholder="Your Message"
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <Button type="submit" className="w-full">
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </Button>
-                  </form>
-                </div>
-              </Card>
+             
+               
             </div>
           </div>
         </div>
@@ -336,10 +363,9 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="text-center">
             <p className="text-muted-foreground mb-2">
-              © 2024 Agrata Humagain. All rights reserved.
             </p>
             <p className="text-muted-foreground flex items-center justify-center gap-1">
-              Made with <Heart className="w-4 h-4 text-red-500" fill="currentColor" /> by Agrata Humagain
+              Made by Agrata Humagain
             </p>
           </div>
         </div>
